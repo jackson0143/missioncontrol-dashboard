@@ -59,8 +59,8 @@ function AgentRow({ agent }: { agent: Agent }) {
 
 export function AgentsPanel() {
   return (
-    <aside className="flex w-[220px] shrink-0 flex-col border-r border-dashed border-stone-300 bg-stone-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
-      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-800">
+    <aside className="flex w-[220px] shrink-0 flex-col border-r border-dashed border-stone-300 bg-stone-50/50 dark:border-zinc-700 dark:bg-zinc-800/60">
+      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-700">
         <span className="text-xs text-amber-500">✦</span>
         <h2 className="text-xs font-bold uppercase tracking-widest text-stone-800 dark:text-zinc-100">
           Agents

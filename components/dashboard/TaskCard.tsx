@@ -7,7 +7,7 @@ export function TaskCard({ task }: { task: Task }) {
   const assignee = task.assignee ? getAgentById(task.assignee) : null;
 
   return (
-    <div className="rounded-lg border border-stone-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:hover:shadow-zinc-900/50">
+    <div className="rounded-lg border border-stone-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-600 dark:bg-zinc-700 dark:hover:shadow-zinc-900/50">
       <div className="flex items-start gap-2">
         {task.status === "inbox" && (
           <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber-400" />

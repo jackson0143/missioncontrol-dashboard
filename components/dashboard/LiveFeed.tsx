@@ -59,9 +59,9 @@ export function LiveFeed() {
   );
 
   return (
-    <aside className="flex w-[320px] shrink-0 flex-col border-l border-dashed border-stone-300 bg-stone-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
+    <aside className="flex w-[320px] shrink-0 flex-col border-l border-dashed border-stone-300 bg-stone-50/50 dark:border-zinc-700 dark:bg-zinc-800/60">
       {/* Section Header */}
-      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-800">
+      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-700">
         <span className="text-xs text-amber-500">✦</span>
         <h2 className="text-xs font-bold uppercase tracking-widest text-stone-800 dark:text-zinc-100">
           Live Feed
@@ -69,7 +69,7 @@ export function LiveFeed() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-1 border-b border-dashed border-stone-200 px-4 py-2 dark:border-zinc-800">
+      <div className="flex items-center gap-1 border-b border-dashed border-stone-200 px-4 py-2 dark:border-zinc-700">
         {feedTabs.map((tab) => (
           <button
             key={tab.key}
@@ -86,7 +86,7 @@ export function LiveFeed() {
       </div>
 
       {/* Agent Filter Pills */}
-      <div className="scrollbar-none flex items-center gap-1.5 overflow-x-auto border-b border-dashed border-stone-200 px-4 py-2 dark:border-zinc-800">
+      <div className="scrollbar-none flex items-center gap-1.5 overflow-x-auto border-b border-dashed border-stone-200 px-4 py-2 dark:border-zinc-700">
         <button
           onClick={() => setActiveAgent(null)}
           className={`flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-[10px] font-medium transition-colors ${

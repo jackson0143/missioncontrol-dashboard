@@ -18,7 +18,7 @@ export function MissionQueue() {
   return (
     <section className="flex min-w-0 flex-1 flex-col overflow-hidden">
       {/* Section Header */}
-      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-800">
+      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-700">
         <span className="text-xs text-amber-500">✦</span>
         <h2 className="text-xs font-bold uppercase tracking-widest text-stone-800 dark:text-zinc-100">
           Mission Queue
@@ -32,10 +32,10 @@ export function MissionQueue() {
           return (
             <div
               key={col.key}
-              className="flex min-w-0 flex-1 flex-col border-r border-dashed border-stone-200 last:border-r-0 dark:border-zinc-800"
+              className="flex min-w-0 flex-1 flex-col border-r border-dashed border-stone-200 last:border-r-0 dark:border-zinc-700"
             >
               {/* Column Header */}
-              <div className="flex items-center gap-2 border-b border-dashed border-stone-200 px-3 py-2.5 dark:border-zinc-800">
+              <div className="flex items-center gap-2 border-b border-dashed border-stone-200 px-3 py-2.5 dark:border-zinc-700">
                 <span
                   className={`h-2 w-2 rounded-full ${columnDotColors[col.key]}`}
                 />

@@ -36,7 +36,7 @@ export function TopBar() {
       .toUpperCase();
 
   return (
-    <header className="flex items-center justify-between border-b border-dashed border-stone-300 bg-stone-50 px-6 py-3 dark:border-zinc-800 dark:bg-zinc-950">
+    <header className="flex items-center justify-between border-b border-dashed border-stone-300 bg-stone-50 px-6 py-3 dark:border-zinc-700 dark:bg-zinc-900">
       {/* Left: Logo + Product */}
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
