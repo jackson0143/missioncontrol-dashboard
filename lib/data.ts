@@ -104,37 +104,38 @@ export const tasks: Task[] = [
 
   {
     id: "t1",
-    title: "Explore SiteGPT Dashboard & Document All",
+    title: "Audit OpenClaw Agent Memory System",
     description:
-      "Thoroughly explore the entire SiteGPT dashboard...",
+      "Map out how agents store and retrieve context across sessions. Document memory architecture and identify bottlenecks...",
     status: "inbox",
     tags: ["research", "documentation"],
     createdAt: "1 day ago",
   },
   {
     id: "t2",
-    title: "Conduct Pricing Audit Using Rob Walling Framework",
+    title: "Design Agent Collaboration Protocol",
     description:
-      "Review SiteGPT pricing against Rob Walling's principle. If one...",
+      "Define how Clawd agents hand off tasks to each other. Establish message format, priority rules, and conflict resolution...",
     status: "inbox",
-    tags: ["strategy"],
+    tags: ["architecture", "strategy"],
     createdAt: "3 hours ago",
   },
   {
     id: "t3",
-    title: "Design Expansion Revenue Mechanics (SaaS Cheat Code)",
-    description: "Implement Rob Walling's...",
+    title: "Build Agent Performance Metrics Pipeline",
+    description:
+      "Create a data pipeline to track agent task completion rates, response times, and error rates in real-time...",
     status: "inbox",
-    tags: ["research", "data"],
+    tags: ["data", "infra"],
     createdAt: "3 hours ago",
   },
 
 
   {
     id: "t4",
-    title: "Product Demo Video Script",
+    title: "OpenClaw Product Demo Video Script",
     description:
-      "Create full script of SiteGPT product demo video with...",
+      "Write the full walkthrough script for the OpenClaw demo video showing multi-agent orchestration in action...",
     status: "assigned",
     assignee: "writebot",
     tags: ["video", "content", "demo"],
@@ -142,31 +143,31 @@ export const tasks: Task[] = [
   },
   {
     id: "t5",
-    title: "Tweet Content - Real Stories Only",
+    title: "Launch Thread - Twitter/X Announcement",
     description:
-      "Create authentic tweets based on real SiteGPT customer data",
+      "Draft a compelling launch thread showcasing Clawd's agent capabilities with real screenshots and demos...",
     status: "assigned",
     assignee: "socialbot",
-    tags: ["social", "twitter", "content"],
+    tags: ["social", "twitter", "launch"],
     createdAt: "8 hours ago",
   },
   {
     id: "t6",
-    title: "Customer Research - Tweet Material",
+    title: "Competitor Research - ChatGPT vs Claude",
     description:
-      "Pull real customer data and stories from Slack for tweet...",
+      "Deep dive into ChatGPT and Claude capabilities. Pull feature comparisons, pricing, and developer experience notes...",
     status: "assigned",
     assignee: "researchbot",
-    tags: ["research", "data"],
+    tags: ["research", "competitive"],
     createdAt: "8 hours ago",
   },
 
 
   {
     id: "t7",
-    title: "SiteGPT vs Zendesk Comparison",
+    title: "ChatGPT vs Claude Comparison Page",
     description:
-      "Create detailed brief for Zendesk AI comparison page",
+      "Create detailed comparison page breaking down ChatGPT vs Claude for AI agent workflows and orchestration...",
     status: "in_progress",
     assignee: "devbot",
     tags: ["competitor", "seo"],
@@ -174,9 +175,9 @@ export const tasks: Task[] = [
   },
   {
     id: "t8",
-    title: "SiteGPT vs Intercom Fin Comparison",
+    title: "Claude vs ChatGPT for Coding - Deep Dive",
     description:
-      "Create detailed brief for Intercom Fin comparison page",
+      "Build out the comparison page focused on coding tasks - benchmarks, agent reliability, and context handling...",
     status: "in_progress",
     assignee: "devbot",
     tags: ["competitor", "seo"],
@@ -184,30 +185,30 @@ export const tasks: Task[] = [
   },
   {
     id: "t9",
-    title: "Mission Control UI",
+    title: "Mission Control Dashboard UI",
     description:
-      "Build real-time agent command center with React + Convex",
+      "Build the real-time agent command center dashboard with React + Next.js for monitoring all Clawd agents...",
     status: "in_progress",
     assignee: "devbot",
-    tags: ["research", "data"],
+    tags: ["frontend", "dashboard"],
     createdAt: "5 hours ago",
   },
 
   {
     id: "t10",
-    title: "Shopify Blog Landing Page",
+    title: "OpenClaw Landing Page Copy",
     description:
-      "Write copy for Shopify integration landing page - how SiteGPT help...",
+      "Write conversion-focused copy for the OpenClaw landing page - hero, features, social proof, and CTA sections...",
     status: "review",
     assignee: "writebot",
-    tags: ["copy", "landing page", "shopify"],
+    tags: ["copy", "landing page"],
     createdAt: "1 day ago",
   },
   {
     id: "t11",
-    title: "Best AI Chatbot for Shopify - Full Blog Post",
+    title: "AI Agent Orchestration - Full Blog Post",
     description:
-      "Write full SEO blog post: Best AI Chatbot for Shopify in 2026.",
+      "Write full SEO blog post: Why Multi-Agent Orchestration is the Future of AI Automation in 2026...",
     status: "review",
     assignee: "writebot",
     tags: ["seo", "blog"],
@@ -217,12 +218,12 @@ export const tasks: Task[] = [
 
   {
     id: "t12",
-    title: "Email Marketing Strategy: Userlist-Inspired Lifecycle Campaigns",
+    title: "Developer Onboarding Email Sequence",
     description:
-      "Design comprehensive email marketing strategy...",
+      "Design 5-email drip sequence for new developers: welcome, quickstart, first agent, advanced patterns, community...",
     status: "done",
     assignee: "mailbot",
-    tags: ["email", "strategy"],
+    tags: ["email", "onboarding"],
     createdAt: "2 days ago",
   },
 ];
@@ -235,7 +236,7 @@ export const feedEntries: FeedEntry[] = [
     agentId: "socialbot",
     type: "comment",
     content:
-      'SocialBot commented on "Write Customer Case Studies (Brent + Will)"',
+      'SocialBot commented on "Launch Thread - Twitter/X Announcement"',
     timestamp: "about 2 hours ago",
   },
   {
@@ -243,7 +244,7 @@ export const feedEntries: FeedEntry[] = [
     agentId: "socialbot",
     type: "comment",
     content:
-      'SocialBot commented on "Twitter Content Blitz - 10 Tweets This Week"',
+      'SocialBot drafted 3 tweet variants for the OpenClaw launch thread',
     timestamp: "about 2 hours ago",
   },
   {
@@ -251,28 +252,28 @@ export const feedEntries: FeedEntry[] = [
     agentId: "socialbot",
     type: "comment",
     content:
-      'SocialBot commented on "Twitter Content Blitz - 10 Tweets This Week"',
+      'SocialBot commented on "Launch Thread" - added demo GIF suggestions',
     timestamp: "about 2 hours ago",
   },
   {
     id: "f4",
     agentId: "writebot",
     type: "task",
-    content: 'WriteBot completed "Shopify Blog Landing Page" draft',
+    content: 'WriteBot completed "OpenClaw Landing Page Copy" first draft',
     timestamp: "about 3 hours ago",
   },
   {
     id: "f5",
     agentId: "researchbot",
     type: "task",
-    content: "ResearchBot started customer research for tweet material",
+    content: "ResearchBot started competitive analysis on ChatGPT vs Claude",
     timestamp: "about 4 hours ago",
   },
   {
     id: "f6",
     agentId: "devbot",
     type: "status",
-    content: "DevBot picked up SiteGPT vs Zendesk comparison task",
+    content: "DevBot picked up ChatGPT vs Claude comparison page",
     timestamp: "about 5 hours ago",
   },
   {
