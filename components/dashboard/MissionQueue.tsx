@@ -18,9 +18,9 @@ export function MissionQueue() {
   return (
     <section className="flex min-w-0 flex-1 flex-col overflow-hidden">
       {/* Section Header */}
-      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-dashed border-stone-300 px-4 py-3 dark:border-zinc-800">
         <span className="text-xs text-amber-500">✦</span>
-        <h2 className="text-xs font-bold uppercase tracking-widest text-stone-800">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-stone-800 dark:text-zinc-100">
           Mission Queue
         </h2>
       </div>
@@ -32,19 +32,19 @@ export function MissionQueue() {
           return (
             <div
               key={col.key}
-              className="flex min-w-0 flex-1 flex-col border-r border-dashed border-stone-200 last:border-r-0"
+              className="flex min-w-0 flex-1 flex-col border-r border-dashed border-stone-200 last:border-r-0 dark:border-zinc-800"
             >
               {/* Column Header */}
-              <div className="flex items-center gap-2 border-b border-dashed border-stone-200 px-3 py-2.5">
+              <div className="flex items-center gap-2 border-b border-dashed border-stone-200 px-3 py-2.5 dark:border-zinc-800">
                 <span
                   className={`h-2 w-2 rounded-full ${columnDotColors[col.key]}`}
                 />
-                <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-zinc-300">
                   {col.label}
                 </span>
                 <Badge
                   variant="secondary"
-                  className="ml-auto flex h-5 min-w-[20px] items-center justify-center bg-stone-200/70 p-0 text-[10px] text-stone-500"
+                  className="ml-auto flex h-5 min-w-[20px] items-center justify-center bg-stone-200/70 p-0 text-[10px] text-stone-500 dark:bg-zinc-700/70 dark:text-zinc-400"
                 >
                   {columnTasks.length}
                 </Badge>

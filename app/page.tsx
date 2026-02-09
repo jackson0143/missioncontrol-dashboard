@@ -5,7 +5,7 @@ import { LiveFeed } from "@/components/dashboard/LiveFeed";
 
 export default function Home() {
   return (
-    <div className="flex h-screen flex-col bg-stone-50 font-sans">
+    <div className="flex h-screen flex-col bg-stone-50 font-sans dark:bg-zinc-950">
       <TopBar />
       <div className="flex flex-1 overflow-hidden">
         <AgentsPanel />

@@ -7,17 +7,17 @@ export function TaskCard({ task }: { task: Task }) {
   const assignee = task.assignee ? getAgentById(task.assignee) : null;
 
   return (
-    <div className="rounded-lg border border-stone-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-md">
+    <div className="rounded-lg border border-stone-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:hover:shadow-zinc-900/50">
       <div className="flex items-start gap-2">
         {task.status === "inbox" && (
           <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber-400" />
         )}
-        <h3 className="text-sm font-semibold leading-tight text-stone-800">
+        <h3 className="text-sm font-semibold leading-tight text-stone-800 dark:text-zinc-100">
           {task.title}
         </h3>
       </div>
 
-      <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-stone-500">
+      <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-stone-500 dark:text-zinc-400">
         {task.description}
       </p>
 
@@ -33,7 +33,9 @@ export function TaskCard({ task }: { task: Task }) {
               </AvatarFallback>
             </Avatar>
           )}
-          <span className="text-[10px] text-stone-400">{task.createdAt}</span>
+          <span className="text-[10px] text-stone-400 dark:text-zinc-500">
+            {task.createdAt}
+          </span>
         </div>
       </div>
 
@@ -43,7 +45,7 @@ export function TaskCard({ task }: { task: Task }) {
             <Badge
               key={tag}
               variant="secondary"
-              className="bg-stone-100 px-1.5 py-0 text-[10px] font-normal text-stone-500"
+              className="bg-stone-100 px-1.5 py-0 text-[10px] font-normal text-stone-500 dark:bg-zinc-700 dark:text-zinc-400"
             >
               {tag}
             </Badge>

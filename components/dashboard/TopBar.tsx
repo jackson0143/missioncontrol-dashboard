@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { agents, tasks } from "@/lib/data";
 import { FileText } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function TopBar() {
   const [time, setTime] = useState<Date | null>(null);
@@ -35,18 +36,18 @@ export function TopBar() {
       .toUpperCase();
 
   return (
-    <header className="flex items-center justify-between border-b border-dashed border-stone-300 bg-stone-50 px-6 py-3">
+    <header className="flex items-center justify-between border-b border-dashed border-stone-300 bg-stone-50 px-6 py-3 dark:border-zinc-800 dark:bg-zinc-950">
       {/* Left: Logo + Product */}
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
           <span className="text-lg">🐾</span>
-          <h1 className="text-sm font-bold tracking-widest text-stone-800 uppercase">
+          <h1 className="text-sm font-bold uppercase tracking-widest text-stone-800 dark:text-zinc-100">
             Mission Control
           </h1>
         </div>
         <Badge
           variant="outline"
-          className="rounded-md border-stone-200 bg-stone-100 text-xs text-stone-500"
+          className="rounded-md border-stone-200 bg-stone-100 text-xs text-stone-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
         >
           Clawd
         </Badge>
@@ -55,42 +56,49 @@ export function TopBar() {
       {/* Center: Stats */}
       <div className="flex items-center gap-12">
         <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-stone-800">{activeAgents}</span>
-          <span className="text-[10px] font-medium uppercase tracking-wider text-stone-400">
+          <span className="text-2xl font-bold text-stone-800 dark:text-zinc-100">
+            {activeAgents}
+          </span>
+          <span className="text-[10px] font-medium uppercase tracking-wider text-stone-400 dark:text-zinc-500">
             Agents Active
           </span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-stone-800">{totalTasks}</span>
-          <span className="text-[10px] font-medium uppercase tracking-wider text-stone-400">
+          <span className="text-2xl font-bold text-stone-800 dark:text-zinc-100">
+            {totalTasks}
+          </span>
+          <span className="text-[10px] font-medium uppercase tracking-wider text-stone-400 dark:text-zinc-500">
             Tasks in Queue
           </span>
         </div>
       </div>
 
-      {/* Right: Docs + Clock + Status */}
-      <div className="flex items-center gap-6">
-        <button className="flex items-center gap-1.5 rounded-full bg-stone-200/70 px-3.5 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-300">
+      {/* Right: Docs + Theme + Clock + Status */}
+      <div className="flex items-center gap-4">
+        <button className="flex items-center gap-1.5 rounded-full bg-stone-200/70 px-3.5 py-1.5 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-300 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700">
           <FileText className="h-3.5 w-3.5" />
           Docs
         </button>
+        <ThemeToggle />
         <div className="flex flex-col items-end">
           {time ? (
             <>
-              <span className="font-mono text-lg font-bold leading-tight text-stone-800 tabular-nums">
+              <span className="font-mono text-lg font-bold leading-tight text-stone-800 tabular-nums dark:text-zinc-100">
                 {formatTime(time)}
               </span>
-              <span className="text-[10px] font-medium tracking-wider text-stone-400">
+              <span className="text-[10px] font-medium tracking-wider text-stone-400 dark:text-zinc-500">
                 {formatDate(time)}
               </span>
             </>
           ) : (
-            <span className="font-mono text-lg font-bold text-stone-800">--:--:--</span>
+            <span className="font-mono text-lg font-bold text-stone-800 dark:text-zinc-100">
+              --:--:--
+            </span>
           )}
         </div>
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
             Online
           </span>
         </div>
