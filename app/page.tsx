@@ -1,17 +1,13 @@
-import { TopBar } from "@/components/dashboard/TopBar";
 import { AgentsPanel } from "@/components/dashboard/AgentsPanel";
 import { MissionQueue } from "@/components/dashboard/MissionQueue";
 import { LiveFeed } from "@/components/dashboard/LiveFeed";
 
 export default function Home() {
   return (
-    <div className="flex h-screen flex-col bg-stone-50 font-sans dark:bg-zinc-900">
-      <TopBar />
-      <div className="flex flex-1 overflow-hidden">
-        <AgentsPanel />
-        <MissionQueue />
-        <LiveFeed />
-      </div>
+    <div className="flex h-full overflow-hidden">
+      <AgentsPanel />
+      <MissionQueue />
+      <LiveFeed />
     </div>
   );
 }

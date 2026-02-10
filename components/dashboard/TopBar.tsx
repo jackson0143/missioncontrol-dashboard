@@ -1,12 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { agents, tasks } from "@/lib/data";
-import { FileText } from "lucide-react";
+import { FileText, LayoutDashboard, Activity } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
+const navLinks = [
+  { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/api-usage", label: "API Usage", icon: Activity },
+];
+
 export function TopBar() {
+  const pathname = usePathname();
   const [time, setTime] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -37,7 +45,7 @@ export function TopBar() {
 
   return (
     <header className="flex items-center justify-between border-b border-dashed border-stone-300 bg-stone-50 px-6 py-3 dark:border-zinc-700 dark:bg-zinc-900">
-      {/* Left: Logo + Product */}
+      {/* Left: Logo + Product + Nav */}
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
           <span className="text-lg">🐾</span>
@@ -51,6 +59,29 @@ export function TopBar() {
         >
           Clawd
         </Badge>
+
+        <div className="mx-1 h-5 w-px bg-stone-300 dark:bg-zinc-700" />
+
+        <nav className="flex items-center gap-1">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[11px] font-medium transition-colors ${
+                  isActive
+                    ? "bg-stone-800 text-white dark:bg-zinc-200 dark:text-zinc-900"
+                    : "text-stone-500 hover:bg-stone-200 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                }`}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
 
       {/* Center: Stats */}

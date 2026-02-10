@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TopBar } from "@/components/dashboard/TopBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,7 +36,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex h-screen flex-col bg-stone-50 font-sans dark:bg-zinc-900">
+            <TopBar />
+            <div className="flex-1 overflow-hidden">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
