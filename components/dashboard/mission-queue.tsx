@@ -2,10 +2,10 @@
 
 import { COLUMN_CONFIG, getTasksByStatus } from "@/lib/data";
 import type { TaskStatus } from "@/lib/data";
-import { TaskCard } from "./TaskCard";
+import { TaskCard } from "./task-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { SectionHeader } from "./ui/section-header";
+import { SectionHeader } from "@/components/shared/section-header";
 
 const columnDotColors: Record<TaskStatus, string> = {
   inbox: "bg-amber-400",

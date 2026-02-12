@@ -1,6 +1,6 @@
-import { AgentsPanel } from "@/components/dashboard/AgentsPanel";
-import { MissionQueue } from "@/components/dashboard/MissionQueue";
-import { LiveFeed } from "@/components/dashboard/LiveFeed";
+import { AgentsPanel } from "@/components/shared/agents-panel";
+import { MissionQueue } from "@/components/dashboard/mission-queue";
+import { LiveFeed } from "@/components/dashboard/live-feed";
 
 export default function Home() {
   return (

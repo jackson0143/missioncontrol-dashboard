@@ -6,9 +6,9 @@ import { agents } from "@/lib/data";
 import type { Agent } from "@/lib/data";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { SectionHeader } from "./ui/section-header";
-import { RoleBadge } from "./ui/role-badge";
-import { StatusDot } from "./ui/status-dot";
+import { SectionHeader } from "@/components/shared/section-header";
+import { RoleBadge } from "@/components/shared/role-badge";
+import { StatusDot } from "@/components/shared/status-dot";
 
 function AgentRow({ agent, isActive }: { agent: Agent; isActive: boolean }) {
   return (

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { agents, tasks } from "@/lib/data";
 import { FileText, LayoutDashboard, Activity, Terminal, CalendarClock, Settings } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },

@@ -6,8 +6,8 @@ import type { FeedEntry } from "@/lib/data";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChevronRight } from "lucide-react";
-import { SectionHeader } from "./ui/section-header";
-import { EmptyState } from "./ui/empty-state";
+import { SectionHeader } from "@/components/shared/section-header";
+import { EmptyState } from "@/components/shared/empty-state";
 
 const feedTabs = [
   { key: "all", label: "All" },

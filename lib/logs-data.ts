@@ -2,7 +2,7 @@ import { agents } from "./data";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
-export type LogLevel = "info" | "warn" | "error" | "debug" | "success";
+export type LogLevel = "success" | "warn" | "error";
 export type LogAction =
   | "api_call"
   | "task_start"
@@ -50,12 +50,10 @@ export const actionLabels: Record<LogAction, string> = {
 };
 
 export const levelColors: Record<LogLevel, string> = {
-  info: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  warn: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-  error: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
-  debug: "bg-stone-100 text-stone-500 dark:bg-zinc-700 dark:text-zinc-400",
   success:
     "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+  warn: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+  error: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
 };
 
 // ── Mock Log Entries ───────────────────────────────────────────────────────
@@ -75,13 +73,12 @@ function agentName(id: string): string {
 }
 
 export const logEntries: LogEntry[] = [
-  // ─ Very recent activity ─────────────────────────────────────
   {
     id: "log-001",
     timestamp: time(0.2),
     agentId: "devbot",
     agentName: agentName("devbot"),
-    level: "info",
+    level: "success",
     action: "api_call",
     summary: "Called claude-4-sonnet for code generation",
     detail:
@@ -91,22 +88,11 @@ export const logEntries: LogEntry[] = [
     latency: 1842,
   },
   {
-    id: "log-002",
-    timestamp: time(0.5),
-    agentId: "devbot",
-    agentName: agentName("devbot"),
-    level: "debug",
-    action: "tool_use",
-    summary: 'write_file → "components/dashboard/MissionQueue.tsx"',
-    detail:
-      "Wrote 142 lines to components/dashboard/MissionQueue.tsx. File size: 4.2 KB. Includes imports for @dnd-kit/core, @dnd-kit/sortable, and @dnd-kit/utilities.",
-  },
-  {
     id: "log-003",
     timestamp: time(0.8),
     agentId: "devbot",
     agentName: agentName("devbot"),
-    level: "info",
+    level: "success",
     action: "memory_write",
     summary: "Stored task context for Mission Control Dashboard UI",
     detail:
@@ -117,7 +103,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(1.2),
     agentId: "socialbot",
     agentName: agentName("socialbot"),
-    level: "info",
+    level: "success",
     action: "api_call",
     summary: "Called claude-4-haiku for tweet draft generation",
     detail:
@@ -143,7 +129,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(2),
     agentId: "clawdlead",
     agentName: agentName("clawdlead"),
-    level: "info",
+    level: "success",
     action: "heartbeat",
     summary: "Heartbeat OK — all systems nominal",
     detail:
@@ -154,7 +140,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(2.5),
     agentId: "researchbot",
     agentName: agentName("researchbot"),
-    level: "info",
+    level: "success",
     action: "api_call",
     summary: "Called gpt-4o for competitive analysis synthesis",
     detail:
@@ -164,33 +150,11 @@ export const logEntries: LogEntry[] = [
     latency: 2100,
   },
   {
-    id: "log-008",
-    timestamp: time(3),
-    agentId: "researchbot",
-    agentName: agentName("researchbot"),
-    level: "debug",
-    action: "tool_use",
-    summary: "web_search → ChatGPT API pricing 2026",
-    detail:
-      'Search query: "ChatGPT API pricing February 2026 per token". Results: 12 hits. Top result: OpenAI pricing page (openai.com/pricing). Extracted: GPT-4o at $2.50/1M input, $10/1M output. GPT-4o-mini at $0.15/1M input, $0.60/1M output.',
-  },
-  {
-    id: "log-009",
-    timestamp: time(3.5),
-    agentId: "researchbot",
-    agentName: agentName("researchbot"),
-    level: "debug",
-    action: "tool_use",
-    summary: "web_search → Claude API pricing 2026",
-    detail:
-      'Search query: "Anthropic Claude API pricing February 2026". Results: 9 hits. Top result: Anthropic pricing page. Extracted: Claude 4 Sonnet at $3/1M input, $15/1M output. Claude 4 Haiku at $0.25/1M input, $1.25/1M output.',
-  },
-  {
     id: "log-010",
     timestamp: time(4),
     agentId: "writebot",
     agentName: agentName("writebot"),
-    level: "info",
+    level: "success",
     action: "api_call",
     summary: "Called claude-4-sonnet for blog post draft",
     detail:
@@ -198,17 +162,6 @@ export const logEntries: LogEntry[] = [
     model: "claude-4-sonnet",
     tokens: 5100,
     latency: 3200,
-  },
-  {
-    id: "log-011",
-    timestamp: time(4.5),
-    agentId: "writebot",
-    agentName: agentName("writebot"),
-    level: "debug",
-    action: "memory_read",
-    summary: "Loaded brand voice guidelines from memory",
-    detail:
-      'Key: writebot:preferences:brand_voice. Retrieved: { tone: "confident but approachable", avoid: ["jargon without explanation", "passive voice"], prefer: ["action verbs", "concrete examples", "developer-first language"] }.',
   },
   {
     id: "log-012",
@@ -237,7 +190,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(7),
     agentId: "mailbot",
     agentName: agentName("mailbot"),
-    level: "info",
+    level: "success",
     action: "api_call",
     summary: "Called gpt-4o-mini for subject line A/B variants",
     detail:
@@ -251,7 +204,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(8),
     agentId: "clawdlead",
     agentName: agentName("clawdlead"),
-    level: "info",
+    level: "success",
     action: "gateway",
     summary: "Gateway session refresh — 7 active nodes",
     detail:
@@ -262,7 +215,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(9),
     agentId: "socialbot",
     agentName: agentName("socialbot"),
-    level: "info",
+    level: "success",
     action: "channel",
     summary: "Listening on Telegram #openclaw-updates",
     detail:
@@ -274,7 +227,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(10),
     agentId: "devbot",
     agentName: agentName("devbot"),
-    level: "info",
+    level: "success",
     action: "task_start",
     summary: 'Started "Mission Control Dashboard UI" (t9)',
     detail:
@@ -310,7 +263,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(18),
     agentId: "researchbot",
     agentName: agentName("researchbot"),
-    level: "info",
+    level: "success",
     action: "task_start",
     summary: 'Started "Competitor Research - ChatGPT vs Claude" (t6)',
     detail:
@@ -321,7 +274,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(20),
     agentId: "clawdlead",
     agentName: agentName("clawdlead"),
-    level: "info",
+    level: "success",
     action: "message_send",
     summary: "Sent daily status digest to admin",
     detail:
@@ -356,29 +309,18 @@ export const logEntries: LogEntry[] = [
     timestamp: time(30),
     agentId: "mailbot",
     agentName: agentName("mailbot"),
-    level: "info",
+    level: "success",
     action: "tool_use",
     summary: "send_email → test onboarding sequence to staging",
     detail:
       'Sent 5-email drip sequence to staging list (3 test addresses). Email provider: Resend. Template IDs: onboard-1 through onboard-5. Scheduled delays: 0h, 24h, 72h, 168h, 336h. All 5 emails queued successfully.',
   },
   {
-    id: "log-025",
-    timestamp: time(35),
-    agentId: "devbot",
-    agentName: agentName("devbot"),
-    level: "debug",
-    action: "tool_use",
-    summary: "git_commit → feat: add agent profile page with tabs",
-    detail:
-      'Committed 3 files: lib/agent-profile-data.ts (+408 lines), app/agents/[id]/page.tsx (+518 lines), components/dashboard/AgentsPanel.tsx (+15 lines modified). Commit message: "feat: add agent profile page with overview, files, and channels tabs". Branch: main.',
-  },
-  {
     id: "log-026",
     timestamp: time(40),
     agentId: "squadbot",
     agentName: agentName("squadbot"),
-    level: "info",
+    level: "success",
     action: "message_receive",
     summary: "Received task handoff from WriteBot → review queue",
     detail:
@@ -389,7 +331,7 @@ export const logEntries: LogEntry[] = [
     timestamp: time(45),
     agentId: "clawdlead",
     agentName: agentName("clawdlead"),
-    level: "info",
+    level: "success",
     action: "api_call",
     summary: "Called claude-4-sonnet for task priority analysis",
     detail:
@@ -397,17 +339,6 @@ export const logEntries: LogEntry[] = [
     model: "claude-4-sonnet",
     tokens: 1850,
     latency: 1200,
-  },
-  {
-    id: "log-028",
-    timestamp: time(50),
-    agentId: "researchbot",
-    agentName: agentName("researchbot"),
-    level: "debug",
-    action: "memory_write",
-    summary: "Stored ChatGPT vs Claude pricing data snapshot",
-    detail:
-      'Key: researchbot:facts:pricing_comparison_2026_02. Value: { gpt4o: { input: 2.5, output: 10 }, gpt4omini: { input: 0.15, output: 0.6 }, claude4sonnet: { input: 3, output: 15 }, claude4haiku: { input: 0.25, output: 1.25 } }. Units: $/1M tokens.',
   },
   {
     id: "log-029",
