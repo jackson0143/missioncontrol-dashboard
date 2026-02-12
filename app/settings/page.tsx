@@ -4,19 +4,15 @@ import { useState } from "react";
 import {
   Settings,
   Key,
-  Radio,
   Cpu,
   Bell,
-  AlertTriangle,
   Save,
   Check,
 } from "lucide-react";
-import { Panel } from "@/components/shared/panel";
 import { PageHeader } from "@/components/shared/page-header";
 import { CodeBadge } from "@/components/shared/code-badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { SectionPanel } from "@/components/settings/section-panel";
 import { SettingRow } from "@/components/settings/setting-row";
 import { Toggle } from "@/components/settings/toggle";
@@ -38,21 +34,18 @@ const selectClass =
 const sidebarSections = [
   { id: "general", label: "General", icon: Settings },
   { id: "api-keys", label: "API Keys", icon: Key },
-  { id: "gateway", label: "Gateway", icon: Radio },
   { id: "models", label: "Models", icon: Cpu },
   { id: "notifications", label: "Notifications", icon: Bell },
-  { id: "danger", label: "Danger Zone", icon: AlertTriangle },
 ];
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState<AppSettings>(defaultSettings);
   const [saved, setSaved] = useState(false);
-  const [showApiKeys, setShowApiKeys] = useState<Record<string, boolean>>({});
 
-  const update = <K extends keyof AppSettings>(
-    section: K,
-    key: keyof AppSettings[K],
-    value: AppSettings[K][keyof AppSettings[K]]
+  const update = (
+    section: keyof AppSettings,
+    key: string,
+    value: unknown
   ) => {
     setSettings((prev) => ({
       ...prev,
@@ -94,11 +87,7 @@ export default function SettingsPage() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className={`flex items-center gap-2 rounded-md px-3 py-2 text-xs font-medium transition-colors ${
-                  s.id === "danger"
-                    ? "text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/50"
-                    : "text-dim hover:bg-muted hover:text-foreground"
-                }`}
+                className="flex items-center gap-2 rounded-md px-3 py-2 text-xs font-medium text-dim transition-colors hover:bg-muted hover:text-foreground"
               >
                 <SIcon className="h-3.5 w-3.5" />
                 {s.label}
@@ -155,25 +144,23 @@ export default function SettingsPage() {
 
           {/* API Keys */}
           <SectionPanel id="api-keys" title="API Keys" description="Manage provider credentials" icon={Key}>
-            <SettingRow label="Moonshot API Key" hint="Used for Kimi K2.5 model access">
+            <SettingRow label="Moonshot API Key" hint="Paste a new key to update. Keys are never displayed.">
               <div className="flex gap-2">
-                <input type={showApiKeys.moonshot ? "text" : "password"} className={`${inputClass} flex-1 font-mono text-xs`} value={settings.apiKeys.moonshotApiKey} onChange={(e) => update("apiKeys", "moonshotApiKey", e.target.value)} />
-                <Button variant="outline" size="sm" onClick={() => setShowApiKeys((prev) => ({ ...prev, moonshot: !prev.moonshot }))}>
-                  {showApiKeys.moonshot ? "Hide" : "Show"}
-                </Button>
-              </div>
-            </SettingRow>
-            <SettingRow label="Gateway Token" hint="Auth token for the OpenClaw gateway">
-              <div className="flex gap-2">
-                <input type={showApiKeys.gateway ? "text" : "password"} className={`${inputClass} flex-1 font-mono text-xs`} value={settings.apiKeys.gatewayToken} onChange={(e) => update("apiKeys", "gatewayToken", e.target.value)} />
-                <Button variant="outline" size="sm" onClick={() => setShowApiKeys((prev) => ({ ...prev, gateway: !prev.gateway }))}>
-                  {showApiKeys.gateway ? "Hide" : "Show"}
+                <input
+                  type="password"
+                  placeholder="Paste new API key..."
+                  className={`${inputClass} flex-1 font-mono text-xs`}
+                  value={settings.apiKeys.moonshotApiKey}
+                  onChange={(e) => update("apiKeys", "moonshotApiKey", e.target.value)}
+                />
+                <Button variant="outline" size="sm" onClick={() => update("apiKeys", "moonshotApiKey", "")}>
+                  Clear
                 </Button>
               </div>
             </SettingRow>
           </SectionPanel>
 
-          {/* Gateway */}
+          {/* Gateway — commented out for now
           <SectionPanel id="gateway" title="Gateway" description="WebSocket connection and auth settings" icon={Radio}>
             <SettingRow label="Gateway URL" hint="WebSocket endpoint for the OpenClaw gateway">
               <input type="text" className={`${inputClass} font-mono text-xs`} value={settings.gateway.url} onChange={(e) => update("gateway", "url", e.target.value)} />
@@ -197,6 +184,7 @@ export default function SettingsPage() {
               <input type="number" className={inputClass} value={settings.gateway.maxRetries} onChange={(e) => update("gateway", "maxRetries", Number(e.target.value))} min={0} max={10} />
             </SettingRow>
           </SectionPanel>
+          */}
 
           {/* Models */}
           <SectionPanel id="models" title="Model Defaults" description="Default model configuration for agents" icon={Cpu}>
@@ -262,51 +250,6 @@ export default function SettingsPage() {
               </div>
             </SettingRow>
           </SectionPanel>
-
-          {/* Danger Zone */}
-          <div id="danger">
-            <Panel className="border-rose-200 dark:border-rose-800/50">
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-100 dark:bg-rose-950">
-                  <AlertTriangle className="h-3.5 w-3.5 text-rose-500" />
-                </div>
-                <div>
-                  <h2 className="text-sm font-bold text-rose-600 dark:text-rose-400">Danger Zone</h2>
-                  <p className="text-xs text-muted-foreground">Irreversible actions</p>
-                </div>
-              </div>
-              <Separator className="my-3" />
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Reset All Settings</p>
-                    <p className="text-xs text-muted-foreground">Restore all settings to their default values</p>
-                  </div>
-                  <Button variant="outline" size="sm" className="border-rose-200 text-rose-600 hover:bg-rose-50 dark:border-rose-800 dark:text-rose-400 dark:hover:bg-rose-950" onClick={() => { setSettings(defaultSettings); setSaved(false); }}>
-                    Reset Settings
-                  </Button>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Clear Agent Data</p>
-                    <p className="text-xs text-muted-foreground">Remove all cached agent state and memory</p>
-                  </div>
-                  <Button variant="outline" size="sm" className="border-rose-200 text-rose-600 hover:bg-rose-50 dark:border-rose-800 dark:text-rose-400 dark:hover:bg-rose-950">
-                    Clear Data
-                  </Button>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Purge Logs</p>
-                    <p className="text-xs text-muted-foreground">Delete all log entries permanently</p>
-                  </div>
-                  <Button variant="outline" size="sm" className="border-rose-200 text-rose-600 hover:bg-rose-50 dark:border-rose-800 dark:text-rose-400 dark:hover:bg-rose-950">
-                    Purge Logs
-                  </Button>
-                </div>
-              </div>
-            </Panel>
-          </div>
         </div>
       </ScrollArea>
     </div>

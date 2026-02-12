@@ -111,14 +111,20 @@ export function TopBar() {
 
       {/* Right: Docs + Theme + Clock + Status */}
       <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="rounded-full bg-stone-200/70 text-xs text-subtle hover:bg-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+        <a
+          href="https://docs.openclaw.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <FileText className="h-3.5 w-3.5" />
-          Docs
-        </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="rounded-full bg-stone-200/70 text-xs text-subtle hover:bg-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+          >
+            <FileText className="h-3.5 w-3.5" />
+            Docs
+          </Button>
+        </a>
         <ThemeToggle />
         <div className="flex flex-col items-end">
           {time ? (
